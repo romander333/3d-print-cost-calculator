@@ -10,3 +10,7 @@ ___________
 (2026-01-17)
 ### Added
 - 6# (Add changelog file)
+
+(2026-01-17)
+### Added
+- 10# (Provide global exception)
