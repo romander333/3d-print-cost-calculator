@@ -1,4 +1,4 @@
-package com.roman.dto;
+package com.roman.dto.material;
 
 import lombok.Builder;
 
@@ -14,5 +14,6 @@ public record MaterialResponseDto(
         Double density,
         String color,
         String manufacturer,
+        Integer quantity,
         Boolean active
 ) {}

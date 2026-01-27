@@ -1,4 +1,4 @@
-package com.roman.dto;
+package com.roman.dto.material;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,6 +34,9 @@ public record MaterialRequestDto(
 
         @NotBlank
         String manufacturer,
+
+        @Positive
+        Integer quantity,
 
         Boolean active
 ) {}

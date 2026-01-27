@@ -25,5 +25,9 @@ public record MaterialUpdateRequestDto(
 
         @Size(min = 1, max = 255)
         String manufacturer,
+
+        @Positive
+        Integer quantity,
+
         Boolean active
 ) {}

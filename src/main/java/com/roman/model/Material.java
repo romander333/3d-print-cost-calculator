@@ -38,6 +38,9 @@ public class Material {
     private String color;
     @Column(name = "manufacturer", nullable = false)
     private String manufacturer;
+    @Column(name = "spools_quantity")
+    @Builder.Default
+    private Integer quantity = 1;
     @Column(name = "is_active")
     @Builder.Default
     private boolean isActive = true;
