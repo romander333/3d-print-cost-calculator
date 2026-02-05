@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 @Builder
 public record MaterialResponseDto(
+        Long id,
         String type,
         String description,
         BigDecimal price,

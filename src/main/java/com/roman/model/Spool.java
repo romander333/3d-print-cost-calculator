@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Getter
 @Setter
 @Table(name = "spools")
@@ -20,6 +21,8 @@ public class Spool {
     @ManyToOne
     @JoinColumn(name = "material_id", nullable = false)
     private Material material;
+    @OneToOne(mappedBy = "currentSpool")
+    private Printer currentPrinter;
     @Column(name = "price", nullable = false)
     private BigDecimal price;
     @Column(name = "current_weight", nullable = false)
@@ -31,5 +34,5 @@ public class Spool {
     private LocalDate purchaseDate = LocalDate.now();
     @Column(nullable = false)
     @Builder.Default
-    private boolean active = true;
+    private boolean active = Boolean.TRUE;
 }

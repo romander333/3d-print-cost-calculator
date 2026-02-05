@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: luchko roman
+      changes:
+        - createTable:
+            tableName: printers
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: model
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: power_consumption_watts
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: current_spool_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+              - column:
+                  name: max_width
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: max_height
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: max_depth
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_print_hours
+                  type: double
+              - column:
+                  name: is_deleted
+                  type: boolean
+                  defaultValue: false

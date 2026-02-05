@@ -10,8 +10,9 @@ import java.math.BigDecimal;
 @Entity
 @Builder
 @AllArgsConstructor
-@SQLDelete(sql = "UPDATE materials SET is_deleted = true WHERE id:?")
+@SQLDelete(sql = "UPDATE materials SET is_deleted = true WHERE id = ?")
 @SQLRestriction("is_deleted = false")
+@EqualsAndHashCode
 @Getter
 @Setter
 @Table(name = "materials")
@@ -43,7 +44,7 @@ public class Material {
     private Integer quantity = 1;
     @Column(name = "is_active")
     @Builder.Default
-    private boolean isActive = true;
+    private boolean isActive = Boolean.TRUE;
     @Column(name = "is_deleted")
     private boolean isDeleted;
 

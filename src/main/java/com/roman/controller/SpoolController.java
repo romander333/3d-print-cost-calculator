@@ -2,7 +2,7 @@ package com.roman.controller;
 
 import com.roman.dto.spool.SpoolMaterialRequestDto;
 import com.roman.dto.spool.SpoolMaterialResponseDto;
-import com.roman.service.SpoolMaterialService;
+import com.roman.service.SpoolService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/spools")
 @RequiredArgsConstructor
 public class SpoolController {
-    private final SpoolMaterialService spoolMaterialService;
+    private final SpoolService spoolMaterialService;
 
     @GetMapping("/{materialId}")
     public List<SpoolMaterialResponseDto> getSpoolsByMaterialId(@PathVariable Long materialId) {
@@ -25,7 +25,7 @@ public class SpoolController {
         return spoolMaterialService.getSpoolById(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public List<SpoolMaterialResponseDto> addSpools(@RequestBody @Valid SpoolMaterialRequestDto requestDto) {
         return spoolMaterialService.addSpools(requestDto);
     }

@@ -8,7 +8,7 @@ import com.roman.model.Material;
 import com.roman.model.Spool;
 import com.roman.repository.MaterialRepository;
 import com.roman.repository.SpoolRepository;
-import com.roman.service.SpoolMaterialService;
+import com.roman.service.SpoolService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class SpoolServiceImpl implements SpoolMaterialService {
+public class SpoolServiceImpl implements SpoolService {
     private final SpoolRepository spoolMaterialRepository;
     private final SpoolMapper spoolMapper;
     private final MaterialRepository materialRepository;
@@ -82,10 +82,6 @@ public class SpoolServiceImpl implements SpoolMaterialService {
         int actualPrice = spoolMaterial.getPrice().intValue();
         int generalMaterialWeight = material.getWeight();
 
-        log.info("Old price: " + oldPrice);
-        log.info("New price: " + actualPrice);
-        log.info("General materialWeight: " + generalMaterialWeight);
-        log.info("General new materialWeight: " + generalNewSpoolsWight);
         int averagePrice = (((generalMaterialWeight * oldPrice) + (generalNewSpoolsWight * actualPrice))) / (generalMaterialWeight + generalNewSpoolsWight);
 
         return BigDecimal.valueOf(averagePrice);

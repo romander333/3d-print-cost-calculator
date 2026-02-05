@@ -10,7 +10,6 @@ import com.roman.model.Spool;
 import com.roman.repository.MaterialRepository;
 import com.roman.repository.SpoolRepository;
 import com.roman.service.MaterialService;
-import com.roman.service.SpoolMaterialService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +23,7 @@ import java.util.List;
 public class MaterialServiceImpl implements MaterialService {
     private final MaterialRepository materialRepository;
     private final MaterialMapper materialMapper;
-    private final SpoolMaterialService spoolMaterialService;
-    private final SpoolRepository spoolMaterialRepository;
+    private final SpoolRepository spoolRepository;
     @Override
     public MaterialResponseDto getMaterialById(Long id) {
         Material material = findMaterialById(id);
@@ -49,8 +47,7 @@ public class MaterialServiceImpl implements MaterialService {
         materialModel.setWeight(spoolsQuantity * materialModel.getWeight());
         Material savedMaterial = materialRepository.save(materialModel);
 
-        List<Spool> spoolCollection = createSpools(spoolsQuantity, savedMaterial, singeWeight);
-        spoolMaterialRepository.saveAll(spoolCollection);
+        createSpools(spoolsQuantity, savedMaterial, singeWeight);
 
         return materialMapper.toDto(savedMaterial);
     }
@@ -82,7 +79,7 @@ public class MaterialServiceImpl implements MaterialService {
 
     private Material findMaterialById(Long id) {
         return materialRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Material not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Material not found by id" + id));
     }
 
     private List<Spool> createSpools(int spoolsQuantity, Material material, Integer singeWeight) {
@@ -98,6 +95,6 @@ public class MaterialServiceImpl implements MaterialService {
 
             spoolCollection.add(spoolMaterial);
         }
-        return spoolMaterialRepository.saveAll(spoolCollection);
+        return spoolRepository.saveAll(spoolCollection);
     }
 }

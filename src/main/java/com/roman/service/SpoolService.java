@@ -5,7 +5,7 @@ import com.roman.dto.spool.SpoolMaterialResponseDto;
 
 import java.util.List;
 
-public interface SpoolMaterialService {
+public interface SpoolService {
     List<SpoolMaterialResponseDto> addSpools(SpoolMaterialRequestDto requestDto);
 
     List<SpoolMaterialResponseDto> getAllSpoolsByMaterialId(Long materialId);
