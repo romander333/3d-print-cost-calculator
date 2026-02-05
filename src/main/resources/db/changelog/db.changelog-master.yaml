@@ -1,3 +1,7 @@
 databaseChangeLog:
   - include:
       file: db/changelog/changelog/create-materials-table.yaml
+  - include:
+      file: db/changelog/changelog/create-spools-table.yaml
+  - include:
+      file: db/changelog/changelog/create-printers-table.yaml

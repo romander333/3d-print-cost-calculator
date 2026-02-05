@@ -27,7 +27,7 @@ public class MaterialController {
         return materialService.getAllMaterials();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public MaterialResponseDto createMaterial(@RequestBody @Valid MaterialRequestDto requestDto) {
         return materialService.createMaterial(requestDto);

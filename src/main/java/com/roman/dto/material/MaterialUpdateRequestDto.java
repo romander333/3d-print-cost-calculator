@@ -2,9 +2,11 @@ package com.roman.dto.material;
 
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 
 import java.math.BigDecimal;
 
+@Builder
 public record MaterialUpdateRequestDto(
         @Size(min = 1)
         String description,
